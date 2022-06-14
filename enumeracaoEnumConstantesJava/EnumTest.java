@@ -8,7 +8,8 @@ public class EnumTest {
 	
 	public static void andar(Medida medida, int total) {
 		if(medida == Medida.M) {
-			// código...
+			// código... ex:
+			System.out.println("você andou " + total + " " + medida.titulo + "s");
 		}
 	}
 

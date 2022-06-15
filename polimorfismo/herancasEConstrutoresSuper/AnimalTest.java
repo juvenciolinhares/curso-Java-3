@@ -25,7 +25,7 @@ public class AnimalTest {
 		carijo.hashCode(); //gera uma espécie de número serial
 		toto.getClass();// tipo da classe desse objeto
 		carijo.toString(); //representação em string desse objeto
-		System.out.println(carijo.toString());
+		
 		
 	}
 

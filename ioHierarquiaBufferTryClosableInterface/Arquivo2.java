@@ -11,41 +11,39 @@ import java.nio.file.Paths;
 
 public class Arquivo2 {
 
-	public static void main(String[] args)  {
-		//na manipulação de arquivos tudo começa com o Path(caminho):
-		Path path = Paths.get("C:\\Users\\jlinhares\\Desktop\\prints");
+	public static void main(String[] args) throws IOException   {
+	
+		Path path = Paths.get("C:\\ws-eclipse\\cursoJava2\\files\\texto.txt");//incio de tudo: path para dizer o caminho que eu quero manipular.
 		
-		//utilizar um escritor de arquivos(writer), posso escrever vários textos
-		Charset utf8 = StandardCharsets.UTF_8;
+		//escritor: de arquivo(writer):
 		
-		//Escrita de arquivos:
+		Charset utf8 = StandardCharsets.UTF_8;//variavel com a condição charset
+	
 		
-		//usando o tratamento de exceções(try{}catch)
+		//usar o try{}catch:   // utilizando esse objeto podemos escrever textos nesses arqvuio
 		try(BufferedWriter w = Files.newBufferedWriter(path, utf8)) {
-		//bufferWriter = deposito de dados(escritos)
+			
+			//escrever textos:
+			w.write("Outro Texto\n");//posso manter esse arquivo aberto e escrever quantas vezes eu quiser.
+			w.write("Outro Texto\n");
+			w.flush();//gravar no disco rígico:
+			
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
 		
-		//escrever:
-		w.write("texto");
-		w.write("Texto");
-		
-		}catch(IOException e) {
-			e.printStackTrace();//imprimir o erro
-		} 
-		
-		//leitura:
+		//ler um arquivo:
+		//inicializar um obj de leitura:
 		try(BufferedReader reader = Files.newBufferedReader(path, utf8)){
-			
-			//ler linha por linha os arquivos:
-			
+			//ler o arqvui linha por linha:
 			String line = null;
 			while((line = reader.readLine()) != null) {
 				System.out.println(line);
 			}
-			
-		}catch (IOException e) {
+		}catch(IOException e) {
 			e.printStackTrace();
 		}
-
+	
 	}
 
 }
@@ -57,7 +55,7 @@ public class Arquivo2 {
  * outputStream: FileOutputStream;FiltyerOutputStream
  * 
  * Streams de caracteres:
- * Reade:BeffuerReader;InputStreamReader
+ * Reade:BuffuerReader;InputStreamReader
  * 
  * Writer: BufferWriter; PrintWQriter; OutputStreamWriter
  * 
@@ -65,5 +63,10 @@ public class Arquivo2 {
  * files
  * 
  * codificação utf8: StandardCharsets.UTF_8
+ * 
+ * buffer:deposito
+ * writer: escritor
+ * BufferedWriter: deposito de dados, armazena os textos 
+ * método flush: grava tudo no disco rígico do computador
  */
  
